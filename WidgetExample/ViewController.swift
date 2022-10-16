@@ -18,6 +18,7 @@ class ViewController: UIViewController {
 	
 	private let button: UIButton = {
 		let button = UIButton()
+		button.backgroundColor = .systemGreen
 		button.setTitleColor(.white, for: .normal)
 		button.setTitle("Save", for: .normal)
 		return button
