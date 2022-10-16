@@ -47,6 +47,7 @@ struct My_WidgetEntryView : View {
 			ZStack {
 				Image("background")
 					.resizable()
+					.aspectRatio(contentMode: .fill)
 				
 				Text(entry.date, style: .time)
 			}
