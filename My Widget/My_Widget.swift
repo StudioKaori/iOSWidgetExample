@@ -44,7 +44,12 @@ struct My_WidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+			ZStack {
+				Image("background")
+					.resizable()
+				
+				Text(entry.date, style: .time)
+			}
     }
 }
 
