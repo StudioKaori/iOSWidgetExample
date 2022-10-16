@@ -50,6 +50,8 @@ struct My_WidgetEntryView : View {
 					.aspectRatio(contentMode: .fill)
 				
 				Text(entry.date, style: .time)
+					.font(.system(size: 24, weight: .semibold, design: .rounded))
+					.foregroundColor(.white)
 			}
     }
 }
