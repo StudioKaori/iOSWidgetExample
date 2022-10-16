@@ -21,12 +21,17 @@ struct Provider: IntentTimelineProvider {
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
+			
+			let userDefaults = UserDefaults(suiteName: "kaoriWidgetCache")
+			let text = userDefaults?.value(forKey: "text") as? String ?? "No text"
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-					let entry = SimpleEntry(date: entryDate, text: "", configuration: configuration)
+					let entry = SimpleEntry(date: entryDate,
+																	text: text,
+																	configuration: configuration)
             entries.append(entry)
         }
 
@@ -50,7 +55,7 @@ struct My_WidgetEntryView : View {
 					.resizable()
 					.aspectRatio(contentMode: .fill)
 				
-				Text(entry.date, style: .time)
+				Text(entry.text)
 					.font(.system(size: 24, weight: .semibold, design: .rounded))
 					.foregroundColor(.white)
 			}

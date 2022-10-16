@@ -48,13 +48,15 @@ class ViewController: UIViewController {
 													height: 50)
 	}
 	
-	@objc private func didTapButton() {
+	@objc private func didTapButton(sender: UIButton!) {
+		print("Save button is tapped")
 		field.resignFirstResponder()
 		
 		let userDefaults = UserDefaults(suiteName: "kaoriWidgetCache")
 		
 		guard let text = field.text,
 					!text.isEmpty else {
+			print("Error: the text field is empty")
 						return
 					}
 		
