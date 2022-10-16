@@ -5,6 +5,7 @@
 //  Created by Kaori Persson on 2022-10-12.
 //
 
+import WidgetKit
 import UIKit
 
 class ViewController: UIViewController {
@@ -48,7 +49,19 @@ class ViewController: UIViewController {
 	}
 	
 	@objc private func didTapButton() {
+		field.resignFirstResponder()
 		
+		let userDefaults = UserDefaults(suiteName: "kaoriWidgetCache")
+		
+		guard let text = field.text,
+					!text.isEmpty else {
+						return
+					}
+		
+		userDefaults?.setValue(text, forKey: "text")
+		
+		// to tell the widget to reload all timelines
+		WidgetCenter.shared.reloadAllTimelines()
 	}
 
 
