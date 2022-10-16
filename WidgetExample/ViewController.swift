@@ -33,6 +33,22 @@ class ViewController: UIViewController {
 		
 		button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
 	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		field.frame = CGRect(x: 20,
+												 y: view.safeAreaInsets.top + 10,
+												 width: view.frame.size.width - 40,
+												 height: 52)
+		button.frame = CGRect(x: 30,
+													y: view.safeAreaInsets.top + 70,
+													width: view.frame.size.width - 60,
+													height: 50)
+	}
+	
+	@objc private func didTapButton() {
+		
+	}
 
 
 }
